@@ -18,8 +18,12 @@ public class ImageTransforms {
 	public static Color[][] copy(Color[][] source) {
 		int rowCount = getRowCount(source);
 		int colCount = getColCount(source);
-		Color[][] destination = null; // TODO: replace null with a new rowCount X colCount matrix (2D array)
-		
+		Color[][] destination = new Color[rowCount][colCount]; // TODO: replace null with a new rowCount X colCount matrix (2D array)
+		for (int i = 0; i < rowCount; ++i) {
+			for (int j = 0; j < colCount; ++j) {
+				destination[i][j] = source[i][j];
+			}
+		}
 
 			// NOTE: do NOT mutate (change) the values of the passed in source
 
@@ -33,8 +37,14 @@ public class ImageTransforms {
 	public static Color[][] flipHorizontal(Color[][] source) {
 		int rowCount = getRowCount(source);
 		int colCount = getColCount(source);
-		Color[][] destination = null; // TODO: replace null with a new rowCount X colCount matrix (2D array)
-		
+		Color[][] destination = new Color[rowCount][colCount]; // TODO: replace null with a new rowCount X colCount matrix (2D array)
+		for (int i = 0; i < rowCount; ++i) {
+			for (int j = 0; j < colCount; ++j) {
+				int hFlip = colCount - 1 - j;
+				destination[i][j] = source[i][hFlip];
+				
+			}
+		}
 
 			// NOTE: do NOT mutate (change) the values of the passed in source
 
@@ -49,9 +59,15 @@ public class ImageTransforms {
 	public static Color[][] flipVertical(Color[][] source) {
 		int rowCount = getRowCount(source);
 		int colCount = getColCount(source);
-		Color[][] destination = null; // TODO: replace null with a new rowCount X colCount matrix (2D array)
+		Color[][] destination = new Color[rowCount][colCount]; // TODO: replace null with a new rowCount X colCount matrix (2D array)
 		
-
+		for (int i = 0; i < rowCount; ++i) {
+			for (int j = 0; j < colCount; ++j) {
+				int vFlip = rowCount - 1 - i;
+				destination[i][j] = source[vFlip][j];
+				
+			}
+		}
 			// NOTE: do NOT mutate (change) the values of the passed in source
 
 			// TODO:
@@ -65,9 +81,16 @@ public class ImageTransforms {
 	public static Color[][] mirrorLeftOntoRight(Color[][] source) {
 		int rowCount = getRowCount(source);
 		int colCount = getColCount(source);
-		Color[][] destination = null; // TODO: replace null with a new rowCount X colCount matrix (2D array)
+		Color[][] destination = new Color[rowCount][colCount]; // TODO: replace null with a new rowCount X colCount matrix (2D array)
 		
-
+		for (int i = 0; i < rowCount; ++i) {
+			for (int j = 0; j < colCount/2; ++j) {
+				destination[i][j] = source[i][j];	
+			}
+			for (int k = colCount/2; k< colCount; ++k) {
+				destination[i][k] = source[i][colCount-1-k];
+			}
+		}
 			// NOTE: do NOT mutate (change) the values of the passed in source
 
 			// TODO:
@@ -81,11 +104,16 @@ public class ImageTransforms {
 	public static Color[][] rotateRight(Color[][] source) {
 		int srcRowCount = getRowCount(source);
 		int srcColCount = getColCount(source);
-		int dstRowCount = -1; // TODO: replace -1 to the correct (rotated) value for destination
-		int dstColCount = -1; // TODO: replace -1 to the correct (rotated) value for destination
-		Color[][] destination = null; // TODO: replace null with a new dstRowCount X dstColCount matrix (2D array)
+		int dstRowCount = getColCount(source); // TODO: replace -1 to the correct (rotated) value for destination
+		int dstColCount = getRowCount(source); // TODO: replace -1 to the correct (rotated) value for destination
+		Color[][] destination = new Color[dstRowCount][dstColCount]; // TODO: replace null with a new dstRowCount X dstColCount matrix (2D array)
 
-		
+
+		for (int i = 0; i < dstRowCount; ++i) {
+			for (int j = 0; j < dstColCount; ++j) {
+				destination[i][j] = source[srcRowCount-1-j][i];
+			}
+		}
 
 			// NOTE: do NOT mutate (change) the values of the passed in source
 
