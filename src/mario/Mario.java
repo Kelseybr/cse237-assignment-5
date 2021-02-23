@@ -23,7 +23,47 @@ public class Mario {
 		//
 		// Create the mountain by printing to System.out
 		//
-
 		
+		if(pattern==1) {
+			for(int i = 1; i < size+1; ++i) {
+				for( int j = size-1; j >= i; --j) {
+					System.out.print(" ");
+				}
+				for(int k = 0; k < i; ++k) {
+					System.out.print("#");
+				}
+				System.out.println();
+			}
+		}
+
+		if(pattern==2) {
+			for(int i = 1; i < size+1; ++i) {
+				for( int j = 0; j < i; ++j) {
+					System.out.print("#");
+				}
+				System.out.println();
+			}
+		}
+		
+		if(pattern==3) {
+			for(int i = size; i >= 0; --i) {
+				for( int j = size - 1; j >= i; --j) {
+					System.out.print(" ");
+				}
+				for(int k = 0; k < i; ++k) {
+					System.out.print("#");
+				}
+				System.out.println();
+			}
+		}
+		
+		if(pattern==4) {
+			for(int i = size; i >= 0; --i) {
+				for(int j = 0; j < i; ++j) {
+					System.out.print("#");
+				}
+				System.out.println();
+			}
+		}
 	}
 }
